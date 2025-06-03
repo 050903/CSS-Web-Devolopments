@@ -1,0 +1,87 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #475569;
+    --accent: #f59e0b;
+    --bg-light: #f8fafc;
+    --text-dark: #1e293b;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.news-widget {
+    max-width: 400px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.widget-title {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.news-list ul {
+    list-style: none;
+    counter-reset: news-counter;
+}
+
+.news-list li {
+    counter-increment: news-counter;
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.news-list li:hover {
+    background: var(--bg-light);
+}
+
+.news-list li::before {
+    content: counter(news-counter);
+    color: var(--primary);
+    font-weight: bold;
+    position: absolute;
+    left: 1rem;
+    padding: 1rem 0;
+}
+
+.news-list a {
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 1rem 1rem 1rem 3rem;
+    display: block;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.news-list a:hover {
+    color: var(--primary);
+}
+
+@media (max-width: 480px) {
+    .news-widget {
+        margin: 1rem;
+        border-radius: 0.5rem;
+    }
+    
+    .news-list a {
+        font-size: 0.875rem;
+    }
+}

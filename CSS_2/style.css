@@ -1,0 +1,41 @@
+/* Main container */
+#tinnoibat {
+    width: 460px;
+    border: 1px solid #993300;
+    min-height: 300px;
+    margin: 0 auto;
+}
+
+/* Top1 section */
+#tinnoibat #top1 {
+    min-height: 140px;
+    border-bottom: dotted 1px #993300;
+    margin-bottom: 5px;
+}
+
+#tinnoibat #top1 a {
+    font-size: 18px;
+    color: #CC0033;
+    text-decoration: none;
+}
+
+#tinnoibat #top1 p {
+    margin-top: 0px;
+}
+
+/* Top3 grid section */
+#tinnoibat #top3 div {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}
+
+#tinnoibat #top3 a {
+    color: #006699;
+    text-decoration: none;
+}
+
+/* Clear float */
+.clear-float {
+    clear: both;
+}

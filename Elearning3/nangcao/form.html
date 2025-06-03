@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Viên CLB Yêu Nhạc - Nâng Cấp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="form-title">Đăng Ký Thành Viên CLB Yêu Nhạc</h2>
+        <form action="#" method="post" id="registrationForm" novalidate> <div class="form-group">
+                <label for="fullName"><i class="fas fa-user"></i> Họ và Tên</label>
+                <input type="text" id="fullName" name="fullName" placeholder="VD: Nguyễn Văn Tèo" required aria-required="true" aria-describedby="fullNameError">
+                <div id="fullNameError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="username"><i class="fas fa-user-tag"></i> Tên đăng nhập</label>
+                <input type="text" id="username" name="username" placeholder="Tối thiểu 4 ký tự, chỉ chữ, số" required minlength="4" pattern="^[a-zA-Z0-9_]+$" aria-required="true" aria-describedby="usernameError">
+                <div id="usernameError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="password"><i class="fas fa-lock"></i> Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Ít nhất 6 ký tự, gồm số, chữ hoa, chữ thường" required minlength="6" aria-required="true" aria-describedby="passwordError passwordStrength">
+                <span class="toggle-password" aria-label="Hiện mật khẩu"><i class="far fa-eye"></i></span>
+                <div class="password-strength" id="passwordStrength" aria-live="polite">
+                    <div class="strength-bar"></div>
+                    <span class="strength-text"></span>
+                </div>
+                <div id="passwordError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="confirmPassword"><i class="fas fa-lock"></i> Gõ lại mật khẩu</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Xác nhận mật khẩu của bạn" required aria-required="true" aria-describedby="confirmPasswordError">
+                <span class="toggle-password" aria-label="Hiện mật khẩu"><i class="far fa-eye"></i></span>
+                <div id="confirmPasswordError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-venus-mars"></i> Giới tính</label>
+                <div class="input-options" role="radiogroup" aria-labelledby="genderLabel">
+                    <span id="genderLabel" class="sr-only">Chọn giới tính của bạn</span>
+                    <input type="radio" id="male" name="gender" value="nam" checked aria-checked="true">
+                    <label for="male">Nam</label>
+                    <input type="radio" id="female" name="gender" value="nu" aria-checked="false">
+                    <label for="female">Nữ</label>
+                    <input type="radio" id="other" name="gender" value="khac" aria-checked="false">
+                    <label for="other">Khác</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob"><i class="fas fa-calendar-alt"></i> Ngày sinh</label>
+                <input type="date" id="dob" name="dob" required aria-required="true" aria-describedby="dobError">
+                <div id="dobError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-globe"></i> Ngoại ngữ</label>
+                <div class="input-options checkbox-group" role="group" aria-labelledby="languageLabel">
+                    <span id="languageLabel" class="sr-only">Chọn ngoại ngữ bạn biết</span>
+                    <input type="checkbox" id="english" name="language" value="anh">
+                    <label for="english">Anh</label>
+                    <input type="checkbox" id="french" name="language" value="phap">
+                    <label for="french">Pháp</label>
+                    <input type="checkbox" id="chinese" name="language" value="hoa">
+                    <label for="chinese">Hoa</label>
+                    <input type="checkbox" id="japanese" name="language" value="nhat">
+                    <label for="japanese">Nhật</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="occupation"><i class="fas fa-briefcase"></i> Nghề nghiệp</label>
+                <select id="occupation" name="occupation" required aria-required="true" aria-describedby="occupationError">
+                    <option value="" disabled selected>Chọn nghề nghiệp của bạn</option>
+                    <option value="hocsinh-sinhvien">Học sinh - Sinh viên</option>
+                    <option value="giao-vien">Giáo viên</option>
+                    <option value="ky-su">Kỹ sư</option>
+                    <option value="nhan-vien">Nhân viên văn phòng</option>
+                    <option value="tu-do">Lao động tự do</option>
+                    <option value="khac">Khác</option>
+                </select>
+                <div id="occupationError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="country"><i class="fas fa-flag"></i> Quốc gia</label>
+                <select id="country" name="country" required aria-required="true" aria-describedby="countryError">
+                    <option value="" disabled selected>Chọn quốc gia</option>
+                    <option value="vietnam">Việt Nam</option>
+                    <option value="usa">Hoa Kỳ</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">Vương quốc Anh</option>
+                    <option value="france">Pháp</option>
+                    <option value="japan">Nhật Bản</option>
+                    <option value="korea">Hàn Quốc</option>
+                    <option value="china">Trung Quốc</option>
+                    <option value="australia">Úc</option>
+                    <option value="other">Khác</option>
+                </select>
+                <div id="countryError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="profilePicture"><i class="fas fa-image"></i> Ảnh đại diện</label>
+                <div class="custom-file-upload">
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*" aria-describedby="profilePictureError">
+                    <span class="file-name" id="fileName">Chưa có tệp nào được chọn</span>
+                    <label for="profilePicture" class="upload-button" tabindex="0" role="button">Chọn tệp</label>
+                </div>
+                <div id="profilePictureError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="aboutMe"><i class="fas fa-info-circle"></i> Giới thiệu bản thân / Sở thích</label>
+                <textarea id="aboutMe" name="aboutMe" rows="5" placeholder="Kể về bản thân, sở thích, và điều bạn mong muốn khi tham gia CLB..." aria-describedby="aboutMeError"></textarea>
+                <div id="aboutMeError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required aria-required="true" aria-describedby="termsError">
+                <label for="terms">Tôi đồng ý với <a href="#" target="_blank">Điều khoản sử dụng</a> và <a href="#" target="_blank">Chính sách bảo mật</a>.</label>
+                <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="registerButton"><i class="fas fa-user-plus"></i> Đăng ký</button>
+                <button type="reset" id="resetButton"><i class="fas fa-redo"></i> Làm lại</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

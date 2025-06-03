@@ -1,0 +1,512 @@
+:root {
+    --primary-color: #673ab7; /* Deep Purple */
+    --primary-hover: #5e35b1;
+    --secondary-color: #ede7f6; /* Lighter Purple */
+    --accent-color: #ffc107; /* Amber Yellow */
+    --text-color: #333;
+    --label-color: #4527a0; /* Darker Purple for labels */
+    --border-color: #ddd;
+    --focus-border-color: var(--primary-color);
+    --error-color: #ef5350; /* Red */
+    --success-color: #4caf50; /* Green */
+    --button-primary-bg: #4caf50; /* Green */
+    --button-primary-hover: #43a047;
+    --button-secondary-bg: #ff9800; /* Orange */
+    --button-secondary-hover: #fb8c00;
+    --container-bg: #ffffff; /* White background for modern look */
+    --container-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --animation-duration: 0.3s;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%); /* Softer gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+    box-sizing: border-box; /* Ensure padding doesn't increase element size */
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 35px 50px;
+    border-radius: 15px;
+    box-shadow: var(--container-shadow);
+    width: 100%;
+    max-width: 700px; /* Increased max-width for more breathing room */
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden; /* For smooth error animations */
+}
+
+.form-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 35px;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.form-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Align label and input at the top */
+    position: relative;
+}
+
+.form-group label {
+    flex: 0 0 180px; /* Further increased label width */
+    color: var(--label-color);
+    font-weight: 600;
+    padding-right: 25px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px; /* Align with input's padding */
+    font-size: 1.05em;
+}
+
+.form-group label i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    flex: 1;
+    padding: 12px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: var(--secondary-color);
+    transition: all var(--animation-duration) ease;
+    min-width: 250px;
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--focus-border-color);
+    box-shadow: 0 0 0 4px rgba(103, 58, 183, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Password Toggle */
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    padding-right: 45px; /* Make space for toggle icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    transition: color var(--animation-duration) ease;
+}
+
+.toggle-password:hover {
+    color: var(--primary-color);
+}
+
+/* Password Strength Meter */
+.password-strength {
+    flex-basis: 100%; /* Take full width */
+    margin-top: 8px;
+    padding-left: 180px; /* Align with input */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-bar::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0%;
+    background-color: #ccc;
+    border-radius: 3px;
+    transition: width var(--animation-duration) ease, background-color var(--animation-duration) ease;
+}
+
+.strength-text {
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* Password strength levels */
+.password-strength.weak .strength-bar::before { width: 33%; background-color: var(--error-color); }
+.password-strength.medium .strength-bar::before { width: 66%; background-color: #ffb300; } /* Orange */
+.password-strength.strong .strength-bar::before { width: 100%; background-color: var(--success-color); }
+.password-strength.weak .strength-text { color: var(--error-color); }
+.password-strength.medium .strength-text { color: #ffb300; }
+.password-strength.strong .strength-text { color: var(--success-color); }
+
+/* Radio and Checkbox Styling */
+.input-options {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.input-options input[type="radio"],
+.input-options input[type="checkbox"] {
+    display: none;
+}
+
+.input-options label {
+    flex: unset;
+    padding: 10px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all var(--animation-duration) ease;
+    color: var(--text-color);
+    font-weight: normal;
+    margin-right: 0;
+    position: relative;
+    font-size: 0.95em;
+}
+
+.input-options label:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(103, 58, 183, 0.1);
+}
+
+.input-options input[type="radio"]:checked + label,
+.input-options input[type="checkbox"]:checked + label {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Terms & Conditions checkbox */
+.terms-checkbox {
+    align-items: flex-start; /* Align text from top */
+}
+
+.terms-checkbox input[type="checkbox"] + label {
+    flex: 1; /* Allow label to take available space */
+    border: none;
+    padding: 0;
+    margin-top: 2px; /* Adjust alignment */
+    border-radius: 0;
+    background-color: transparent;
+    font-size: 0.9em;
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.terms-checkbox input[type="checkbox"] + label:hover {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Custom checkbox for terms */
+.terms-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.terms-checkbox label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 10px;
+    transition: background-color var(--animation-duration) ease, border-color var(--animation-duration) ease;
+}
+
+.terms-checkbox input[type="checkbox"]:checked + label::before {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    content: '\2713'; /* Checkmark character */
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    line-height: 18px; /* Adjust line height for checkmark vertical alignment */
+}
+
+.terms-checkbox a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Custom File Upload */
+.custom-file-upload {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    padding: 8px;
+    transition: all var(--animation-duration) ease;
+}
+
+.custom-file-upload:focus-within {
+    border-color: var(--focus-border-color);
+    box-shadow: 0 0 0 4px rgba(103, 58, 183, 0.2);
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    flex: 1;
+    padding: 0 12px;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95em;
+}
+
+.upload-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--animation-duration) ease, transform var(--animation-duration) ease;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.upload-button:hover {
+    background-color: #e6b100;
+    transform: translateY(-1px);
+}
+
+/* Buttons */
+.button-group {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.button-group button {
+    padding: 14px 35px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: bold;
+    transition: all var(--animation-duration) ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button-group button i {
+    font-size: 22px;
+}
+
+.button-group button[type="submit"] {
+    background-color: var(--button-primary-bg);
+    color: white;
+}
+
+.button-group button[type="submit"]:hover {
+    background-color: var(--button-primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-group button[type="reset"] {
+    background-color: var(--button-secondary-bg);
+    color: var(--text-color);
+}
+
+.button-group button[type="reset"]:hover {
+    background-color: var(--button-secondary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: var(--error-color);
+    font-size: 0.88em;
+    margin-top: 5px;
+    flex-basis: 100%;
+    padding-left: 180px; /* Align with input */
+    box-sizing: border-box;
+    display: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity var(--animation-duration) ease, max-height var(--animation-duration) ease;
+}
+
+.form-group.invalid .error-message {
+    display: block;
+    opacity: 1;
+    max-height: 50px; /* Sufficient height to show error */
+}
+
+.form-group.invalid input,
+.form-group.invalid select,
+.form-group.invalid textarea,
+.form-group.invalid .custom-file-upload {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 2px rgba(239, 83, 80, 0.2);
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 30px;
+        margin: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .form-group label {
+        flex: unset;
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 5px;
+        font-size: 1em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .input-options,
+    .custom-file-upload {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .error-message {
+        padding-left: 0;
+        font-size: 0.8em;
+    }
+
+    .password-strength {
+        padding-left: 0;
+    }
+
+    .input-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .input-options label {
+        width: auto;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .button-group button {
+        width: 100%;
+        font-size: 17px;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .form-title {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .button-group button {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+
+    .toggle-password {
+        top: 40%; /* Adjust for smaller input height */
+        transform: translateY(-50%) scale(0.9);
+    }
+}

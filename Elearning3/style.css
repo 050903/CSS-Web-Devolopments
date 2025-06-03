@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fce4ec; /* Light pink background */
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px; /* Adjust width as needed */
+}
+
+.form-title {
+    text-align: center;
+    color: #4a148c; /* Dark purple for title */
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 2px solid #ce93d8; /* Lighter purple border */
+    padding-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    flex: 0 0 120px; /* Fixed width for labels */
+    color: #333;
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #e0f2f7; /* Light blue for input fields */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    min-height: 80px;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.file-input-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.file-input-group input[type="text"] {
+    flex: 1;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.hidden-file-input {
+    display: none; /* Hide the default file input */
+}
+
+.browse-button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: -1px; /* Overlap border */
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.browse-button:hover {
+    background-color: #0056b3;
+}
+
+.button-group {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-group button {
+    padding: 10px 25px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-group button[type="submit"] {
+    background-color: #28a745; /* Green for Register */
+    color: white;
+}
+
+.button-group button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.button-group button[type="reset"] {
+    background-color: #ffc107; /* Yellow for Reset */
+    color: #333;
+}
+
+.button-group button[type="reset"]:hover {
+    background-color: #e0a800;
+}
